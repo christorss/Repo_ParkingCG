@@ -3,12 +3,12 @@ from decimal import Decimal
 from math import ceil
 
 class Cliente(models.Model):
-    nombre = models.CharField(max_length=150)
-    apellido = models.CharField(max_length=150)
+    Nombre = models.CharField(max_length=150)
+    Apellido = models.CharField(max_length=150)
     cedula = models.CharField(max_length=15, unique=True)
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+        return f"{self.Nombre} {self.Apellido}"
 
 
 class Cobro(models.Model):
@@ -38,11 +38,6 @@ class Cobro(models.Model):
     def calcular_total(self):
         return self.tarifa_por_hora * Decimal(self.horas_cobrables())
 
-    def save(self, *args, **kwargs):
-        if self.salida:
-            self.total = self.calcular_total()
-        else:
-            self.total = None
-        super().save(*args, **kwargs)
+   
 
 
