@@ -35,8 +35,7 @@ class Cobro(models.Model):
         segundos = duracion.total_seconds()
         return max(1, ceil(segundos / 3600))
 
-    def calcular_total(self):
-        return self.tarifa_por_hora * Decimal(self.horas_cobrables())
+  
 
     def save(self, *args, **kwargs):
         if self.salida:
