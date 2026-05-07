@@ -11,7 +11,7 @@ class Cliente(models.Model):
         return f"{self.Nombre} {self.Apellido}"
 
 
-class Cobro(models.Model):
+
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name="cobros")
     vehiculo = models.CharField(max_length=150)
     placa = models.CharField(max_length=15)
