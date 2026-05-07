@@ -38,6 +38,11 @@ class Cobro(models.Model):
     def calcular_total(self):
         return self.tarifa_por_hora * Decimal(self.horas_cobrables())
 
-   
+    def save(self, *args, **kwargs):
+        if self.salida:
+            self.total = self.calcular_total()
+        else:
+            self.total = None
+        super().save(*args, **kwargs)
 
 
